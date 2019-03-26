@@ -36,21 +36,22 @@ public class Progama {
 			System.out.print("Check-out Date (dd/MM/yyyy) : ");
 			checkout = sdf.parse(sc.next());
 
-			Date now = new Date();
-			if (checkin.before(now) || checkout.before(now)) {
-				System.out.println("Err in Reservation:  Reservation Dates for Update  Must be Future Dates ");
-			} else if (!checkout.after(checkin)) {
-				System.out.println("Err in reservation: check-out must be after check-in date ");
-			} else {
+		
 
-				reservation.UpdateDates(checkin, checkout);
-				System.out.println("Reservation :" + reservation);
+				String error= reservation.UpdateDates(checkin, checkout);
+				if(error != null) {
+					System.out.println("Error : in  reservation"+error);
+				}else {
+					System.out.println("Reservation :" + reservation);
+				}
+				
 			}
-
+			
+			
 		}
 
-		sc.close();
-
-	}
+		
 
 }
+
+
